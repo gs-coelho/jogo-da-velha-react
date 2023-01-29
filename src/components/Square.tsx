@@ -1,7 +1,14 @@
-type SquareProps = {
-  value: string,
-}
+import { useState } from "react";
   
-export function Square({ value }: SquareProps){
-  return <button className="square">{value}</button>;
+export function Square(){
+  const [value, setValue] = useState("");
+
+  return (
+    <button
+      className="square"
+      onClick={() => setValue("X")}
+    >
+      {value}
+    </button>
+  );
 }
