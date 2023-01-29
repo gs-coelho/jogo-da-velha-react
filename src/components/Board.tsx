@@ -1,11 +1,12 @@
 import { Square, SquareValue } from "./Square";
 
+export type BoardState = SquareValue[];
 
 export type BoardProps = {
   isXTurn: boolean,
-  squares: SquareValue[],
+  squares: BoardState,
   onPlay: (nextSquares: SquareValue[]) => void
-}
+};
 
 export function Board({isXTurn, squares, onPlay}: BoardProps) {
 
@@ -46,7 +47,7 @@ export function Board({isXTurn, squares, onPlay}: BoardProps) {
   );
 }
 
-function calculateWinner(squares: SquareValue[]): SquareValue{
+function calculateWinner(squares: BoardState): SquareValue{
   const lines = [
     [0, 1, 2],
     [3, 4, 5],

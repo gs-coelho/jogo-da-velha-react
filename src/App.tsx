@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { Board } from "./components/Board";
-import { SquareValue } from "./components/Square";
+import { Board, BoardState } from "./components/Board";
 
 export default function Game() {
-  const [history, setHistory] = useState([Array(9).fill(null) as SquareValue[]]);
+  const [history, setHistory] = useState([Array(9).fill(null) as BoardState]);
   const [currentMove, setCurrentMove] = useState(0);
   const isXTurn = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
-  function handlePlay(nextSquares: SquareValue[]){
+  function handlePlay(nextSquares: BoardState){
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1)
@@ -18,8 +17,8 @@ export default function Game() {
     setCurrentMove(nextMove);
   }
 
-  const moves = history.map((squares: SquareValue[], moveIndex: number) => {
-    let description;
+  const moves = history.map((squares: BoardState, moveIndex: number) => {
+    let description: string;
 
     if(moveIndex === 0){
       description = `Voltar para o início do jogo`
@@ -28,9 +27,13 @@ export default function Game() {
     } else {
       description = `Voltar para a jogada ${moveIndex}`;
     }
+    
     return (
       <li key={moveIndex}>
-        <button onClick={() => jumpTo(moveIndex)} disabled={moveIndex === currentMove}>
+        <button
+          onClick={() => jumpTo(moveIndex)}
+          disabled={moveIndex === currentMove}
+        >
           {description}
         </button>
       </li>
