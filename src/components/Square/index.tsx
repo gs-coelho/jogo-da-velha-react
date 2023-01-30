@@ -1,3 +1,4 @@
+import "./styles.css";
 export type SquareValue = "X" | "O" | null;
 
 type SquareProps = {

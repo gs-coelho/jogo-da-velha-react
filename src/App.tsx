@@ -29,24 +29,25 @@ export default function Game() {
     }
 
     return (
-      <li key={moveIndex}>
-        <button
-          onClick={() => jumpTo(moveIndex)}
-          disabled={moveIndex === currentMove}
-        >
-          {description}
-        </button>
-      </li>
+      <button
+        key={moveIndex}
+        onClick={() => jumpTo(moveIndex)}
+        disabled={moveIndex === currentMove}
+      >
+        {description}
+      </button>
     );
   }).reverse();
 
   return (
     <div className="game">
       <div className="game-board">
+        <h1>Jogo da Velha</h1>
         <Board isXTurn={isXTurn} squares={currentSquares} onPlay={handlePlay}/>
       </div>
       <div className="game-info">
-        <ul>{moves}</ul>
+        <h1>Histórico de Jogadas</h1>
+        {moves}
       </div>
     </div>
   )

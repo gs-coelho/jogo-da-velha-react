@@ -1,4 +1,5 @@
-import { Square, SquareValue } from "./Square";
+import { Square, SquareValue } from "../Square";
+import "./styles.css";
 
 export type BoardState = SquareValue[];
 
@@ -46,10 +47,10 @@ export function Board({isXTurn, squares, onPlay}: BoardProps) {
   
 
   return(
-    <>
+    <div>
       <div className="status">{status}</div>
       {rows}
-    </>
+    </div>
   );
 }
 
