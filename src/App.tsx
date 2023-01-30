@@ -27,7 +27,7 @@ export default function Game() {
     } else {
       description = `Voltar para a jogada ${moveIndex}`;
     }
-    
+
     return (
       <li key={moveIndex}>
         <button
@@ -38,7 +38,7 @@ export default function Game() {
         </button>
       </li>
     );
-  });
+  }).reverse();
 
   return (
     <div className="game">
